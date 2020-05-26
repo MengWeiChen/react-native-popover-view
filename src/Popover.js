@@ -174,6 +174,8 @@ class Popover extends React.Component {
     */
 
     Dimensions.removeEventListener('change', this.handleResizeEvent)
+    this.keyboardDidShowListener && this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener && this.keyboardDidHideListener.remove();
   }
 
   // First thing called when device rotates
