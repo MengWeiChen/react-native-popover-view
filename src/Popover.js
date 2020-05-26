@@ -164,12 +164,14 @@ class Popover extends React.Component {
   componentWillUnmount() {
     this._isMounted = false;
 
+    /*
     if (this.state.visible) {
       this.animateOut();
     } else {
       setTimeout(this.props.onCloseStart);
       setTimeout(this.props.onCloseComplete);
     }
+    */
 
     Dimensions.removeEventListener('change', this.handleResizeEvent)
   }
@@ -812,7 +814,7 @@ class Popover extends React.Component {
             setTimeout(() => getRectForRef(this.popoverRef, (rect) => this.debug("animateIn - onOpenComplete - Calculated Popover Rect", rect)));
         }
         setTimeout(this.props.onOpenComplete);
-        if (this.animateOutAfterShow || !this._isMounted) {
+        if (this.animateOutAfterShow && this._isMounted) {
           this.animateOut();
           this.animateOutAfterShow = false;
         }
